@@ -1,0 +1,8 @@
+.hero-block__container{
+	max-width: 800px;
+	margin: 100px auto 0px auto;
+	
+}
+.hero-block__text{
+	line-height: 150%;
+}

@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900);
+
+body {
+	font-family: 'montserrat';
+	font-size: 18px;
+}
+
+ul {
+	margin-top: 100px;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+
+}
+
+.todo__list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.todo__list--item {
+	padding: 10px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	background-color: rgb(224, 224, 224);
+	text-transform: capitalize;
+}
+
+.todo__add {
+	font-size: 18px;
+	width: 100%;
+	background-color: rgb(216, 195, 180);
+	border: 5px solid transparent;
+	cursor: pointer;
+	transition: all 0.3s;
+	text-transform: uppercase;
+}
+
+.todo__add:hover {
+	background-color: rgb(190, 174, 162);
+}
+
+.todo__inputs {
+	margin-top: 15px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todo__input--title,
+.todo__input--description {
+
+	height: 30px;
+	border: 1px solid rgb(190, 174, 162);
+	border-radius: 5px;
+}
+
+.todo__input--title {
+	width: 200px;
+}
+
+.todo__input--description {
+	width: 500px;
+}
+
+.todo__input--chekbox {
+	height: 30px;
+	width: 30px;
+}
+
+.todo__input--title:focus,
+.todo__input--description:focus {
+	outline: none;
+}
+.todo__buttons{
+	display: flex;
+	column-gap: 5px;
+}
+.todo__delete {
+	border-radius: 5px;
+	background-color: rgb(216, 180, 180);
+	border: 0px solid transparent;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 400;
+	transition: all 0.3s;
+}
+
+.todo__delete:hover {
+	background-color: rgb(190, 162, 162);
+}
+
+.todo__edit{
+	border-radius: 5px;
+	background-color: rgb(179, 228, 178);
+	border: 0px solid transparent;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 400;
+	transition: all 0.3s;
+}
+.todo__edit:hover{
+	background-color: rgb(173, 190, 162);
+}

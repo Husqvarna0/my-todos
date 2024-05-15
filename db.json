@@ -1,0 +1,32 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "todo 1",
+      "description": "lorem ipsum dos tres ultra",
+      "checked": true,
+      "creationDate": "data створення"
+    },
+    {
+      "id": "d53f",
+      "title": "1111111111111111111111",
+      "description": "11111111111111111111111",
+      "checked": true,
+      "creationDate": "2024-05-03"
+    },
+    {
+      "id": "ddea",
+      "title": "2222222222222233333",
+      "description": "2222222333333",
+      "checked": true,
+      "creationDate": "2024-05-03"
+    },
+    {
+      "id": "4aa9",
+      "title": "32323",
+      "description": "2323232цц",
+      "checked": true,
+      "creationDate": "2024-05-03"
+    }
+  ]
+}

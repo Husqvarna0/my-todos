@@ -1,0 +1,42 @@
+.todo__header-container {
+
+	margin: 0px auto 0px auto;
+	position: relative;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+}
+
+.todo__header {
+	
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+
+
+	padding: 20px 0px 20px 0px;
+	background-color: #0325;
+
+
+
+	margin: 0px auto 0px auto;
+}
+
+.todo__block {
+	height: 100%;
+	padding: 100px 0px;
+}
+
+.todo__footer {
+	
+	padding: 20px 0px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background-color: #0325;
+	bottom: 0;
+	left: 0;
+}
