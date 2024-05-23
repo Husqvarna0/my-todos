@@ -1,0 +1,7 @@
+.todo__modal{
+	display: flex;
+	justify-content: center;
+}
+.todo__form--modal{
+	width: 800px;
+}

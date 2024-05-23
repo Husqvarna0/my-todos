@@ -2,63 +2,66 @@ import { useState, useEffect } from 'react';
 import styles from './Modal.css';
 import { useFetch } from '../../hooks/useFetch';
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 
-const Modal = ({ modal,  todos, id, setData, setTitle, setDescription, setChecked }) => {
+const Modal = ({ todos, id, setData }) => {
 
 	const [modalData, setModalData] = useState([]);
 	const [titleModal, setTitleModal] = useState('');
 	const [descriptionModal, setDescriptionModal] = useState('');
 	const [checkedModal, setCheckedModal] = useState(false);
+	const navigate = useNavigate();
 
-	const filteredDataById  = (dataArr, id) => {
+
+	const filteredDataById = (dataArr, id) => {
 		const filteredObj = dataArr.find(item => item.id === id);
 		return (filteredObj ? [filteredObj] : []);
 	}
-	// console.log(todos)
-	// console.log(id)
-	useEffect(() => {
-		setModalData(filteredDataById(todos, id));		
-	}, [todos, id]);
-	
-	
-	
 
-	// const [item, setItem] = useState([]);	
+	useEffect(() => {
+		setModalData(filteredDataById(todos, id));
+	}, [todos, id]);
+
+
+
+
+
 	useEffect(() => {
 		if (modalData[0]) {
-			 setTitleModal(modalData[0].title);
-			 setDescriptionModal(modalData[0].description);
-			 setCheckedModal(modalData[0].checked);
+			setTitleModal(modalData[0].title);
+			setDescriptionModal(modalData[0].description);
+			setCheckedModal(modalData[0].checked);
 		}
-  }, [modalData]);
-  
-	
+	}, [modalData]);
+
+
 	const editTodo = async (e) => {
+		e.preventDefault();
 		const item = {
 			title: titleModal,
 			description: descriptionModal,
 			checked: checkedModal,
 		}
 
-		const response = await axios.patch(`todos/${id}`, item)
-			.then(response => {
-				console.log('Користувача успішно оновлено:', response.data);
-			})
-			.catch(error => {
-				console.error('Помилка оновлення користувача:', error);
-			});
-
-			setData(prev => [...prev, response.data]);
-			// setTitleModal(e.target.value);
-			// setDescriptionModal(e.target.value);
-			// setCheckedModal(e.target.value);
+		try {
+			const response = await axios.patch(`todos/${id}`, item);
+			console.log('Користувача успішно оновлено:', response.data);
+			setData(prev => prev.map(todo => (todo.id === id ? response.data : todo)));
+			navigate('/todos'); // Перенаправлення після успішного збереження
+		 } catch (error) {
+			console.error('Помилка оновлення користувача:', error);
+		 }
+		// setTitleModal(e.target.value);
+		// setDescriptionModal(e.target.value);
+		// setCheckedModal(e.target.value);
 
 	}
 
-	return ( modal ? (
+	return (
 		<div className='todo__modal'>
 			<form className='todo__form--modal'>
-				<button onClick={editTodo} className='todo__add'>Save</button>
+				<Link to={`/todos`} onClick={editTodo} className='todo__add'>Save </Link>
+				{/* <button onClick={editTodo} className='todo__add'> Save</button> */}
 				<div className='todo__inputs'>
 					<input
 						type='text'
@@ -67,7 +70,7 @@ const Modal = ({ modal,  todos, id, setData, setTitle, setDescription, setChecke
 
 						onChange={e => setTitleModal(e.target.value)}
 					/>
-	
+
 					<input
 						type='text'
 						className='todo__input--description'
@@ -82,7 +85,7 @@ const Modal = ({ modal,  todos, id, setData, setTitle, setDescription, setChecke
 				</div>
 
 			</form>
-		</div>) : null 
+		</div>
 	)
 }
 

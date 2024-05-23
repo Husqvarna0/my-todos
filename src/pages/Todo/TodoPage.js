@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useFetch } from '../../hooks/useFetch';
 import Modal from '../../components/modal/Modal';
 import { Link } from 'react-router-dom';
-const TodoPage = () => {
+const TodoPage = ({showModal}) => {
 
 	const getCurrentTimeFormatted = () => {
 		const now = new Date();
@@ -53,11 +53,7 @@ const TodoPage = () => {
 		setData((prev) => prev.filter(item => item.id !== id));
 	}
 
-	const showModal = (e) => {
-		setModal(prevModal => !prevModal);
-		setId(e);
-
-	}
+	
 
 	// useEffect(() => {
 	// 	setId(id)
@@ -103,8 +99,8 @@ const TodoPage = () => {
 									<input type='checkbox' checked={todo.checked}></input>
 									<div className='todo__date'>{todo.creationDate}</div>
 									<div className='todo__buttons'>
-										{/* <Link to={`${todos.id}`} onClick={(e) => showModal(e.target.id)} className='todo__edit'> Edit</Link> */}
-										<button id={todo.id} onClick={(e) => showModal(e.target.id)} className='todo__edit'>Edit</button>
+										<Link id={todo.id} to={`/todos/${todo.id}`} onClick={(e) => showModal(e.target.id)}  className='todo__edit'> Edit</Link>
+										
 										<button onClick={() => deleteTodo(todo.id)} className='todo__delete'>Delette</button>
 									</div>
 
@@ -113,12 +109,12 @@ const TodoPage = () => {
 						)}
 				</ul>
 				<div className='modal__wrapper'>
-					<Modal
+					{/* <Modal
 						modal={modal}
 						todos={todos}
 						id={id}
 						
-					/>
+					/> */}
 				</div>
 
 			</div>
